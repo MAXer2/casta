@@ -5,7 +5,7 @@ import string
 import time
 import requests
 import json
-import sqlite3
+
 from telebot import types
 from array import *
 #from randomsovet import my_list
