@@ -14,7 +14,6 @@ import mysql.connector
 from mysql.connector import MySQLConnection, Error
 
 
-
 bot = telebot.TeleBot('5220624851:AAGYx7fmi8z_32lGeydTm79HbaJc5TKi20E')
 
 mydb = mysql.connector.connect(
@@ -74,17 +73,18 @@ try:
 
 
             mycursor = mydb.cursor()
-            mycursor.execute(f"SELECT Count(ID_practice) FROM `practice` ")
+            mycursor.execute(f"SELECT Count(ID_practice) FROM `practice`")
             countid = int(mycursor.fetchone()[0])
 
             practiceid = random.randint(1, countid)
 
-            mycursor.execute(f"SELECT `TEXT_practice` FROM `practice` WHERE ID_practice = {practiceid} ")
+            mycursor.execute(f"SELECT `Text_practice` FROM `practice` WHERE ID_practice = {practiceid} ")
             myresult = str(mycursor.fetchone()[0])
             bot.send_message (message.chat.id, myresult)
             mycursor.close()
 
 except Exception as e:
     print('ошибка')
+
 
 bot.polling()
